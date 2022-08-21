@@ -18,7 +18,17 @@ function ready () {
         var input = quantityInputs[i]
         input.addEventListener('change', quantityChanged)
     }
+
+    var addToCartButtons = document.getElementsByClassName('buy-btn')
+    for (var i = 0; i < addToCartButtons.length; i++) {
+        var button = addToCartButtons[i]
+        button.addEventListener('click', addToCartClicked)
+    }
+
+
 }
+
+
 
 function removeCartItem (event) {
     let buttonClicked = event.target
@@ -34,6 +44,15 @@ function quantityChanged (event) {
     }
     updateCartTotal()
 }
+
+
+function addToCartClicked(event) {
+    var button = event.target
+    var shopItem = button.parentElement.parentElement
+    var title = shopItem.getElementsByClassName('prod-title')[0].innerText
+    console.log(title)
+}
+
 
 function updateCartTotal() {
     var cartItemContainer = document.getElementsByClassName('cart-items')[0]
